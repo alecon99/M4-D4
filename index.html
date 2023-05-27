@@ -20,11 +20,11 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <span class="material-symbols-outlined">shopping_bag</span>
                 </a>
-                <ul id="cart" class="dropdown-menu">
-                  <li>Il tuo carrello</li>
+                <ul id="cart" class="dropdown-menu p-2 text-center">
+                  <h6>Il tuo carrello</h6>
                 </ul>
               </li>
             </ul>
@@ -37,6 +37,13 @@
       </nav>
     <!-- main -->
     <main class="mx-4">
+        <!-- mostrare se non troviamo risultati dalla ricerca -->
+        <div id="not_found" class="text-center">
+          <h2>Not found</h2>
+          <a>... try looking for another book ...</a>
+        </div>
+      
+        <!-- container cards -->
         <div id="container_cards" class="row"></div>
     </main>
     <!-- footer -->

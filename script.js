@@ -78,7 +78,8 @@ function searchCard() {
                     </div>
                 </div>`;
                 containerCards.appendChild(newDiv);
-            };
+            } else {
+            }
         }
     })
     .catch((err)=> console.log(err))
@@ -87,5 +88,5 @@ function searchCard() {
 document.onload= homeCard();
 
 function addCart(){
-    console.log("aggiunto");
+    console.log("aggiunto")
 }

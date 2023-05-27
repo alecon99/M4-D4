@@ -1,11 +1,9 @@
 /* elementi DOM */
 let input = document.getElementById("input_search");
 let containerCards = document.getElementById("container_cards");
-let buttonCard = document.getElementById("button_card");
 let cart = document.getElementById("cart");
 let logoButton = document.getElementById("logo_button");
 let notFound = document.getElementById("not_found");
-
 
 /* variabile valore input */
 let lowInputValue = "";
@@ -16,19 +14,6 @@ logoButton.addEventListener("click",()=> {
     homeCard()
 });
 
-/* funzione avvio ricerca */
-function search() {
-    if (input.value.length>2){
-        let inputValue = "";
-        inputValue = input.value;
-        lowInputValue = inputValue.toLowerCase()
-        input.value = "";
-        searchCard();
-    } else {
-        alert("inserisci almeno tre lettere");
-        input.value = "";
-    }
-}
 
 /* funzione card home */
 function homeCard() {
@@ -48,7 +33,7 @@ function homeCard() {
                 <div class="card-body d-flex flex-column justify-content-between">
                     <h5 class="card-title">${bookTitle}</h5>
                     <p class="card-text">€ ${bookPrice}</p>
-                    <button onclick="addCart()" type="button" class="btn btn-dark">Add to cart</button>
+                    <button id="button_card" type="button" class="btn btn-dark">Add to cart</button>
                 </div>
             </div>`;
             containerCards.appendChild(newDiv);
@@ -56,6 +41,9 @@ function homeCard() {
     })
     .catch((err)=> console.log(err))
 }
+
+/* avvio funzione al caricamneto pagina */
+document.onload = homeCard();
 
 /* ricerca card */
 function searchCard() {
@@ -79,7 +67,7 @@ function searchCard() {
                     <div class="card-body d-flex flex-column justify-content-between">
                         <h5 class="card-title">${bookTitle}</h5>
                         <p class="card-text">€ ${bookPrice}</p>
-                        <button onclick="addCart()" type="button" class="btn btn-dark">Add to cart</button>
+                        <button id="button_card" type="button" class="btn btn-dark">Add to cart</button>
                     </div>
                 </div>`;
                 containerCards.appendChild(newDiv);
@@ -89,9 +77,19 @@ function searchCard() {
     .catch((err)=> console.log(err))
 }
 
-/* avvio funzione al caricamneto pagina */
-document.onload = homeCard();
-
-function addCart(){
-    console.log("aggiunto")
+/* funzione avvio ricerca */
+function search() {
+    if (input.value.length>2){
+        let inputValue = "";
+        inputValue = input.value;
+        lowInputValue = inputValue.toLowerCase()
+        input.value = "";
+        searchCard();
+    } else {
+        alert("inserisci almeno tre lettere");
+        input.value = "";
+    }
 }
+
+
+

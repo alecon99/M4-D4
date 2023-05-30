@@ -37,3 +37,26 @@ h5 {
 #not_found h2{
     font-size: 3rem;
 }
+
+/* carrello */
+ul {
+    max-width: 300px;
+}
+
+ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+ul p {
+    margin: 0;
+}
+
+h6 {
+    margin: 0;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

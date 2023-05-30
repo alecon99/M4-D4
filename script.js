@@ -5,6 +5,9 @@ let cart = document.getElementById("cart");
 let logoButton = document.getElementById("logo_button");
 let notFound = document.getElementById("not_found");
 
+/* URL */
+let Url = "https://striveschool-api.herokuapp.com/books";
+
 /* variabile valore input */
 let inputValue = "";
 let lowInputValue = "";
@@ -16,14 +19,13 @@ logoButton.addEventListener("click",()=> {
 });
 
 /* avvio funzione al caricamneto pagina */
-document.onload =
-    homeCard();
+document.onload = homeCard();
 
 
 /* funzione card home */
 function homeCard() {
     notFound.classList.add("d-none");
-    fetch ("https://striveschool-api.herokuapp.com/books")
+    fetch (Url)
     .then((response)=> response.json())
     .then((object)=>{
         for (let i = 0; i < object.length; i++) {
@@ -65,7 +67,7 @@ function search() {
 /* ricerca card */
 function searchCard() {
     containerCards.innerHTML="";
-    fetch ("https://striveschool-api.herokuapp.com/books")
+    fetch (Url)
     .then((response)=> response.json())
     .then((object)=>{
         notFound.classList.remove("d-none");
@@ -84,7 +86,7 @@ function searchCard() {
                     <div class="card-body d-flex flex-column justify-content-between">
                         <h5 class="card-title">${bookTitle}</h5>
                         <p class="card-text">€ ${bookPrice}</p>
-                        <button id="button_card" type="button" class="btn btn-dark">Add to cart</button>
+                        <button onclick="addToCart('${bookTitle}','${bookPrice}')" id="button_card" type="button" class="btn btn-dark">Add to cart</button>
                     </div>
                 </div>`;
                 containerCards.appendChild(newDiv);
@@ -96,6 +98,13 @@ function searchCard() {
 
 function addToCart(title,price){
     let newLi = document.createElement("li");
-    newLi.innerHTML=`<h6>${title}</h6><p>${price}</p>`;
+    let titleLi = document.createElement("h6");
+    titleLi.innerText= `${title}`;
+    let priceLi = document.createElement("p");
+    priceLi.innerText=`€${price}`;
+
+    newLi.appendChild(titleLi);
+    newLi.appendChild(priceLi);
+
     cart.appendChild(newLi);
 }

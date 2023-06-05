@@ -39,8 +39,10 @@ function homeCard() {
                 <img src="${bookImg}" class="card-img-top" alt="...">
                 <div class="card-body d-flex flex-column justify-content-between">
                     <h5 class="card-title">${bookTitle}</h5>
-                    <p class="card-text">€ ${bookPrice}</p>
-                    <button onclick="addToCart('${bookTitle}','${bookPrice}')" id="button_card" type="button" class="btn btn-dark">Add to cart</button>
+                    <div class=" d-flex justify-content-between">
+                        <button onclick="addToCart('${bookTitle}','${bookPrice}')" id="button_card" type="button" class="btn btn-dark">€ ${bookPrice}</button>
+                        <button onclick="remove('${newDiv}')" id="button_card" type="button" class="btn btn-danger">X</button>
+                    </div>
                 </div>
             </div>`;
             containerCards.appendChild(newDiv);
@@ -48,8 +50,6 @@ function homeCard() {
     })
     .catch((err)=> console.log(err))
 }
-
-
 
 /* funzione avvio ricerca */
 function search() {
@@ -90,21 +90,30 @@ function searchCard() {
                     </div>
                 </div>`;
                 containerCards.appendChild(newDiv);
+                
             }
         }
     })
     .catch((err)=> console.log(err))
 }
 
+/* aggiunta elementi carrello */
 function addToCart(title,price){
     let newLi = document.createElement("li");
+    newLi.classList.add("m-1")
     let titleLi = document.createElement("h6");
     titleLi.innerText= `${title}`;
     let priceLi = document.createElement("p");
     priceLi.innerText=`€${price}`;
+    let cancel = document.createElement("button");
+    cancel.classList.add("btn", "btn-danger");
+    cancel.innerText="X";
 
     newLi.appendChild(titleLi);
     newLi.appendChild(priceLi);
+    newLi.appendChild(cancel);
 
     cart.appendChild(newLi);
 }
+
+
